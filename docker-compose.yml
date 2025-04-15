@@ -1,0 +1,7 @@
+version: "3.7"
+
+services:
+  cargo_ntfy:
+    build: .
+    environment:
+      scanning_interval: 5 # seconds (900s=15min)
