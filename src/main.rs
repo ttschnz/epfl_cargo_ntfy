@@ -23,7 +23,13 @@ impl Args {
 
 fn main() {
     let args = Args::from_env().unwrap();
-
+    let _ = ntfy::send_notification(
+        "epfl_cargo_bikes",
+        &format!(
+            "refreshing bike list every {}s, and will notify in this channel when bikes available.",
+            args.scanning_interval
+        ),
+    );
     loop {
         let bikes = fetch_bikes((46.536678, 6.590684), (46.506217, 6.534188)).unwrap();
         bikes.hubs.iter().for_each(|hub| {

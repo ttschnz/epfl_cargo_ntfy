@@ -4,8 +4,8 @@
 # Create a stage for building the application.
 
 
-ARG RUST_VERSION=1.75.0
-ARG APP_NAME=epfl_lockers
+ARG RUST_VERSION=1.81.0
+ARG APP_NAME=cargo_ntfy
 FROM rust:${RUST_VERSION}-slim-bullseye AS build
 ARG APP_NAME
 WORKDIR /app
@@ -30,7 +30,7 @@ RUN --mount=type=bind,source=src,target=src \
     <<EOF
 set -e
 cargo build --locked --release
-cp ./target/release/${APP_NAME} /bin/epfl_lockers
+cp ./target/release/${APP_NAME} /bin/cargo_ntfy
 EOF
 
 ################################################################################
